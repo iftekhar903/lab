@@ -1,0 +1,190 @@
+
+.....................................................................
+task 1:
+......................................................................
+#include<stdio.h>       
+int factorial(int n)                            
+{                                             
+    if(n==1)                                  
+    {                                        
+        return 1;                              
+    }                                        
+    return factorial(n-1)*n;
+}
+
+int main()
+{
+    int result=factorial(4);
+    printf("%d\n\n",result);
+
+    return 0;
+}
+................................................................................
+task 2
+...............................................................................
+#include<stdio.h>
+
+int fibonacci(int n)
+{
+    if(n <= 1)
+    {
+        return n;
+    }
+    else
+    {
+        return fibonacci(n-1)+fibonacci(n-2);
+    }
+}
+
+int main()
+{
+    int result;
+    result= fibonacci(10);
+    printf("%d", result);
+
+    return 0;
+}
+......................................................................
+task 3
+...........................................................................
+#include<stdio.h>
+int print_array(int size, int arr[], int start)
+{
+    if(start >= size)
+    {
+        return;
+    }
+    else
+    {
+        printf("%d\t", arr[start]);
+    }
+    print_array(size, arr, start+1);
+}
+int main()
+{
+    int array[5]={10, 15, 5, 6, 3};
+
+    print_array(5, array, 0);
+
+    return 0;
+}
+..................................................................
+task 5
+...................................................................
+#include<stdio.h>
+int power(int n, int p)
+{
+    printf("%d*",n);
+    if(p==0)
+    {
+        return 1;
+    }
+    return power(n, p-1)*n;
+}
+int main()
+{
+    int result=power(5,4);
+    printf("\nResult= %d\n",result);
+    return 0;
+}
+.........................................................................
+selection sort :
+.............................................................................
+#include<stdio.h>
+int main()
+{
+    int n = 5;
+    int arr[5] = {7, 10, 6, 5, 15};
+    int i, j, min;
+
+    for (i = 0; i < n - 1; i++)
+    {
+        min = i;
+        for (j=i+1; j<n; j++)
+        {
+            if (arr[j] < arr[min])
+            {
+                min = j;
+            }
+        }
+        int temp = arr[min];
+        arr[min] = arr[i];
+        arr[i] = temp;
+    }
+    printf("Our modified array is: ");
+    for (i = 0; i < n; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+    printf("\n\n");
+    return 0;
+}
+......................................................................
+RECURSIVELY using insertion sort :
+.......................................................................
+#include<stdio.h>
+void i_sort(int array[], int size)   
+{
+  if(size<=0)           
+  {
+    return;           
+  }
+  i_sort(array, size-1);     
+  int last=array[size-1];      
+  int j=size-2;            
+  while(j>=0 && array[j]>last)  
+  {
+    array[j+1]=array[j];      
+    j--;              
+  }
+  array[j+1]=last;         
+}
+int main()
+{
+  int array[5]={5, 3, 1, 6, 4};    //declare an array
+  i_sort(array, 5);          
+  printf("Our sorted array is: \n");
+
+  for(int i=0; i<5; i++)       
+  {
+    printf("%d\t", array[i]);
+  }
+  printf("\n\n");
+  return 0;
+}
+.......................................................................
+binary search algorithm RECURSIVELY:
+..........................................................................
+#include<stdio.h>
+int b_Search (int arr [], int target, int left, int right)
+{
+  if (left > right)                       
+  {
+    return -1;                       
+  }
+  int mid = (left + right) / 2;                  
+  if (target == arr [mid])                   
+  {
+    return mid;                         
+  }
+  else if (target < arr [mid])
+  {
+    return b_Search (arr, target, left, mid - 1);       
+  }
+  else
+  {
+    return b_Search (arr, target, mid + 1, right);       
+  }
+}
+int main()
+{
+  int array[6]= {5, 10, 2, 6, 8, 4};              
+  int size=6;                     
+  int right=size-1;                      
+  int left=size-size;                       
+  int target=2;                          
+  int result=b_Search(array, target, left, right);       
+  printf("%d\n\n", result);                 
+  return 0;
+}
+
